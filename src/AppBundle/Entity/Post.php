@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Post
 {
+   
     /**
      * @var int
      *
@@ -35,12 +36,10 @@ class Post
      */
     private $content;
 
-
-    /**
-     * Get id
-     *
-     * @return int
+   /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="Posts")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-   
+    private $user_id;
 }
 
