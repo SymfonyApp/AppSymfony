@@ -3,7 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\User;
+use Doctrine\Common\Collections\ArrayCollection;    
 
 
 /**
@@ -86,6 +87,14 @@ class User
         $this->username = $username;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }
 
