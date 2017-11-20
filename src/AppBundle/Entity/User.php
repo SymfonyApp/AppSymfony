@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;    
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -28,6 +29,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255)
+     *
+     * @Assert\Length(min="10",minMessage="this value was to short")
      */
     private $username;
 
