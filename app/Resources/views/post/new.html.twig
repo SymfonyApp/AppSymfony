@@ -2,15 +2,21 @@
 
 {% block body %}
     <h1>Post creation</h1>
+    <a href="{{ path('post_index') }}" class="btn btn-primary pull-right" style="margin-bottom: 10px"> Back to the list</a>
+
+    {% form_theme form 'bootstrap_3_layout.html.twig'  %}
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
+{% endblock %}
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            CKEDITOR.replace( 'appbundle_post[content]' );
+        });
+    </script>
 {% endblock %}
