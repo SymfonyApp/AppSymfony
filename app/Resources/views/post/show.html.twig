@@ -2,8 +2,11 @@
 
 {% block body %}
     <h1>Post</h1>
-
-    <table>
+   <div>
+       <a style="margin-bottom: 10px" class="btn pull-right btn-default" href="{{ path('post_index') }}">Back to the list</a>
+       <a style="margin: 0px 10px 10px 0px" class="btn pull-right btn-primary" href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
+   </div>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -19,18 +22,7 @@
             </tr>
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {{ form_start(delete_form) }}
+        <input class="btn pull-right btn-danger" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
 {% endblock %}

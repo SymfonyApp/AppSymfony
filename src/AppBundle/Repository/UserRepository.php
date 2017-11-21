@@ -10,4 +10,23 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function loadUserByUsername($username)
+    {
+        $user = $this->createQueryBuilder('u')
+            ->where('u.username = :username')
+            ->setParameter('username', $username)
+            ->setParameter('email', $username)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        if (null === $user) {
+            $message = sprintf(
+                'Unable to find an active admin AppBundle:User object identified by "%s".',
+                $username
+            );
+            throw new UsernameNotFoundException($message);
+        }
+
+        return $user;
+    }
 }
